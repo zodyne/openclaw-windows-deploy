@@ -12,9 +12,10 @@
 
 - 🚀 **一键安装**：PowerShell 脚本自动完成 Node.js → OpenClaw → 模型配置 → Gateway 服务注册
 - 🧠 **双模型引擎**：GLM-5.2（主）+ DeepSeek-V4（回退），自动故障切换
-- 📦 **5 个可选技能包**：OCR 读图、LaTeX 检查、项目防漂移治理、知识图谱工作流
+- 📦 **5 个可选技能包**：OCR 读图、LaTeX 检查、项目防漂移治理、知识图谱工作流（自动装依赖）
 - 🛡️ **安全设计**：API Key 通过环境变量注入，配置文件不含密钥
 - ✅ **部署后自动健康检查**
+- 🔧 **全链路自动**：Node.js、Python 3、Ollama、pip 包、LaTeX 均自动检测安装
 
 ### 快速开始
 
@@ -100,9 +101,10 @@ One-click deployment toolkit for OpenClaw v2026.6.11 on Windows 10/11. Includes 
 
 - 🚀 **One-Click Install**: Node.js → OpenClaw → model config → Gateway service
 - 🧠 **Dual Model Engine**: GLM-5.2 (primary) + DeepSeek-V4 (fallback) with auto-failover
-- 📦 **5 Optional Skill Packs**: OCR, LaTeX checker, anti-drift governance, knowledge workflow
+- 📦 **5 Optional Skill Packs**: OCR, LaTeX checker, anti-drift governance, knowledge workflow (auto-installs deps)
 - 🛡️ **Secure**: API keys via environment variables
 - ✅ **Post-deployment Health Check**
+- 🔧 **Fully Automated**: Node.js, Python 3, Ollama, pip packages, LaTeX auto-detected and installed
 
 ### Quick Start
 

@@ -120,10 +120,7 @@ gbrain-knowledge-workflow knowledge   GBrain Knowledge Workflow
 
 纯文本模型（GLM-5.2 / DeepSeek）无法直接读图。此技能通过 RapidOCR（ONNX Runtime）将图片转为文字，离线运行，支持中英文。
 
-**安装依赖：**
-```powershell
-pip install rapidocr-onnxruntime
-```
+**安装依赖：** 自动安装（pip install rapidocr-onnxruntime）
 
 **触发词：** 读图、OCR、识别图片文字、extract text from image
 
@@ -131,12 +128,7 @@ pip install rapidocr-onnxruntime
 
 将 LaTeX 图表的视觉缺陷（箭头交叉、标签溢出、字体缺失）转化为可 grep 的编译日志信号。包含 `--render` 模式可将 PDF 页面转为 PNG 交由视觉模型做最终检查。
 
-**安装依赖：**
-```powershell
-# 安装 TeX 发行版（二选一）
-winget install TeXLive.TeXLive    # 或 MiKTeX.MiKTeX
-winget install OSSP.poppler       # pdftoppm
-```
+**安装依赖：** 自动安装（winget install MiKTeX.MiKTeX + OSSP.poppler）
 
 #### evidence-ledger — 项目防漂移治理
 
@@ -148,10 +140,7 @@ winget install OSSP.poppler       # pdftoppm
 
 **适用场景：** 多会话工程项目、移植/迁移项目、需要可审计进度追踪的场景。
 
-**安装依赖：**
-```powershell
-pip install pyyaml
-```
+**安装依赖：** 自动安装（pip install pyyaml）
 
 #### anti-drift-governance — 多角色审查环
 

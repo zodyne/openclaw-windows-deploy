@@ -86,6 +86,37 @@ function Install-NodeJS {
     }
 }
 
+# ─── 检测/安装 Python 3（技能依赖前置）───
+function Install-Python3 {
+    Write-Step "检测 Python 3"
+    try {
+        $v = python --version 2>&1
+        if ($v -match "Python 3") {
+            Write-OK "Python 已安装: $v"
+            return
+        }
+    } catch {}
+    
+    Write-Info "Python 3 未安装，尝试自动安装..."
+    $winget = Get-Command winget -ErrorAction SilentlyContinue
+    if ($winget) {
+        winget install Python.Python.3.12 --silent --accept-package-agreements
+    } else {
+        Write-Warn "无法自动安装 Python（无 winget）"
+        Write-Info "请手动安装: https://www.python.org/downloads/"
+        Write-Info "Python 仅为可选技能依赖，不影响核心部署"
+        return
+    }
+    # 刷新 PATH
+    $env:PATH = [Environment]::GetEnvironmentVariable("PATH", "Machine") + ";" + [Environment]::GetEnvironmentVariable("PATH", "User")
+    try {
+        $v = python --version 2>&1
+        Write-OK "Python 安装成功: $v"
+    } catch {
+        Write-Warn "Python 安装后需重启终端才能生效（不影响核心部署）"
+    }
+}
+
 # ─── 安装 OpenClaw ───
 function Install-OpenClaw {
     Write-Step "安装 OpenClaw"
@@ -315,6 +346,7 @@ if ($ConfigOnly) {
 
 Test-Prerequisites
 Install-NodeJS
+Install-Python3
 Install-OpenClaw
 Install-Ollama
 Initialize-Workspace
