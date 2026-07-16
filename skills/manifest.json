@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "description": "可选技能包 — 部署后通过 install-skills.ps1 装配到 workspace",
+  "skills": {
+    "read-image": {
+      "name": "Read Image (RapidOCR)",
+      "description": "离线 OCR 图片文字提取（中英文），纯文本模型读图的替代方案",
+      "category": "utility",
+      "requirements": "Python 3 + rapidocr-onnxruntime",
+      "install_type": "copy",
+      "files": ["skills/read-image/"]
+    },
+    "latex-tikz-figures": {
+      "name": "LaTeX/TikZ Figure Checker",
+      "description": "纯文本模型的 LaTeX/TikZ 编译检查器，将视觉缺陷转为可 grep 的日志信号",
+      "category": "utility",
+      "requirements": "xelatex (TeX Live / MiKTeX) + pdftoppm (poppler)",
+      "install_type": "copy",
+      "files": ["skills/latex-tikz-figures/"]
+    },
+    "evidence-ledger": {
+      "name": "Evidence Ledger (项目防漂移治理)",
+      "description": "哈希锁定宪章、证据分档账本、声明-证据绑定校验器、脚本生成汇报、换脑审计",
+      "category": "governance",
+      "requirements": "Python 3 + PyYAML",
+      "install_type": "copy",
+      "files": ["skills/evidence-ledger/"]
+    },
+    "anti-drift-governance": {
+      "name": "Anti-Drift Governance (多角色审查环)",
+      "description": "五角色证据驱动治理：宪章哈希锁、STATUS.yaml、R1-R8 规则、交叉验证审查环",
+      "category": "governance",
+      "requirements": "Python 3 + PyYAML",
+      "install_type": "copy",
+      "files": ["skills/anti-drift-governance/"]
+    },
+    "gbrain-knowledge-workflow": {
+      "name": "GBrain Knowledge Workflow",
+      "description": "通过 MCP 工具维护和查询知识库的标准工作流（需 GBrain MCP 服务）",
+      "category": "knowledge",
+      "requirements": "GBrain MCP server + PGLite",
+      "install_type": "copy",
+      "files": ["skills/gbrain-knowledge-workflow/"]
+    }
+  }
+}

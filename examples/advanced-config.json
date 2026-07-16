@@ -1,0 +1,78 @@
+{
+  "_comment": "高级配置示例 — 包含 Ollama 记忆搜索、MCP 服务器、自定义技能",
+  
+  "models": {
+    "providers": {
+      "zai": {
+        "baseUrl": "https://open.bigmodel.cn/api/anthropic",
+        "apiKey": "YOUR_KEY",
+        "api": "anthropic-messages",
+        "models": [
+          { "id": "glm-5.2", "name": "GLM-5.2", "reasoning": true, "input": ["text"],
+            "contextWindow": 200000, "maxTokens": 32768 }
+        ]
+      },
+      "novasky": {
+        "baseUrl": "https://api.deepseek.com/v1",
+        "apiKey": "YOUR_KEY",
+        "api": "openai-completions",
+        "models": [
+          { "id": "deepseek-v4-pro", "name": "DeepSeek V4", "reasoning": true, "input": ["text"],
+            "contextWindow": 1000000, "maxTokens": 128000, "compat": { "supportsDeveloperRole": false } }
+        ]
+      },
+      "openai": {
+        "baseUrl": "https://api.openai.com/v1",
+        "apiKey": "YOUR_OPENAI_KEY",
+        "api": "openai-completions",
+        "models": [
+          { "id": "gpt-4o", "name": "GPT-4o", "reasoning": true, "input": ["text"],
+            "contextWindow": 128000, "maxTokens": 16384 }
+        ]
+      }
+    }
+  },
+  
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "zai/glm-5.2",
+        "fallbacks": ["novasky/deepseek-v4-pro", "openai/gpt-4o"]
+      },
+      "memorySearch": {
+        "enabled": true,
+        "provider": "openai",
+        "model": "bge-m3",
+        "outputDimensionality": 1024,
+        "remote": { "baseUrl": "http://127.0.0.1:11434/v1", "apiKey": "ollama" },
+        "extraPaths": ["C:\\Users\\YourName\\.openclaw\\workspace\\knowledge-base\\vault"]
+      },
+      "subagents": { "maxConcurrent": 2, "maxSpawnDepth": 2, "maxChildrenPerAgent": 5 }
+    }
+  },
+  
+  "mcp": {
+    "servers": {
+      "filesystem": {
+        "url": "http://localhost:3100/mcp",
+        "transport": "streamable-http"
+      },
+      "database": {
+        "url": "http://localhost:3200/mcp",
+        "transport": "streamable-http",
+        "headers": { "Authorization": "Bearer your-token" }
+      }
+    }
+  },
+  
+  "gateway": {
+    "port": 18789,
+    "bind": "loopback",
+    "auth": { "mode": "token" }
+  },
+  
+  "channels": {
+    "telegram": { "enabled": true, "botToken": "YOUR_BOT_TOKEN" },
+    "discord": { "enabled": true, "botToken": "YOUR_BOT_TOKEN" }
+  }
+}
